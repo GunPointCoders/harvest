@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'Constant_Colors.dart' as colors;
 
+import 'add_to_log.dart';
 import 'InputboxClass.dart';
 import 'Register_Page.dart';
+import 'create_log_main.dart';
 
 
 
@@ -54,6 +56,8 @@ class _Login extends State<Login>{
                               borderRadius: const BorderRadius.all(Radius.circular(30),),
                               child: ElevatedButton(
                                 onPressed: () {
+
+                                  Navigator.push(context, MaterialPageRoute(builder: (contex) => const createL()),);
                                  //Navigator.push(context, MaterialPageRoute(builder: (context){return const NameOfThePage();},),);
                               },
 
