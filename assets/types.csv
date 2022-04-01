@@ -1,0 +1,20 @@
+Type,Supertype
+Allium,Vegetable
+Berry,Fruit
+Citrus,Fruit
+Cruciferous,Vegetable
+Cucurbit,Vegetable
+False Fruit,Fruit
+Flower,Flower
+Leaf,Vegetable
+Legume,Vegetable
+Nightshade,Vegetable
+Nut,Fruit
+Pome Fruit,Fruit
+Root,Vegetable
+Seed,Flower
+Soft Herb,Herb
+Stalk,Vegetable
+Stone Fruit,Fruit
+Vine Fruit,Fruit
+Hard Herb,Herb
