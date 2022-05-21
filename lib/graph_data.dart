@@ -4,6 +4,7 @@ import 'chart_model.dart';
 
 class graph extends StatelessWidget{
 
+
 final List<ProduceTimeline>data;
 
 graph({required this.data});
