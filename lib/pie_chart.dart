@@ -2,7 +2,16 @@
 import 'package:flutter/material.dart';
 import 'package:pie_chart/pie_chart.dart';
 
-class graph extends StatelessWidget{
+class pie extends StatefulWidget {
+
+  pie({Key?key}) :super(key: key);
+
+  @override
+  _pie createState() => _pie();
+
+}
+
+class _pie extends State{
 
   Map<String,double>data={
     "this month":33,
