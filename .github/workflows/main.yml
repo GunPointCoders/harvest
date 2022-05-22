@@ -20,7 +20,7 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           flutter-version: '2.10.5'
-          
+
       - name: Get all Flutter Packages
         run: flutter pub get
 
@@ -31,4 +31,4 @@ jobs:
         uses: codecov/codecov-action@v1
         with:
           token: ${{secrets.CODECOV_TOKEN}}
-          file: coverage/Icov.info
+          file: coverage/lcov.info
