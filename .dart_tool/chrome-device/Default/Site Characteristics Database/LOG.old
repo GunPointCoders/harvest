@@ -1,5 +1,9 @@
-2022/05/08-15:56:54.317 26bc Log #3: 13 ops saved to Table #4 OK
-2022/05/08-15:56:54.320 26bc Archiving C:\Users\AUDRYG~1\AppData\Local\Temp\flutter_tools.5e4b71d8\flutter_tools_chrome_device.765e5bca\Default\Site Characteristics Database/000003.log: OK
-2022/05/08-15:56:54.320 26bc Table #4: 13 entries OK
-2022/05/08-15:56:54.321 26bc Archiving C:\Users\AUDRYG~1\AppData\Local\Temp\flutter_tools.5e4b71d8\flutter_tools_chrome_device.765e5bca\Default\Site Characteristics Database/MANIFEST-000001: OK
-2022/05/08-15:56:56.098 26bc **** Repaired leveldb C:\Users\AUDRYG~1\AppData\Local\Temp\flutter_tools.5e4b71d8\flutter_tools_chrome_device.765e5bca\Default\Site Characteristics Database; recovered 1 files; 414 bytes. Some data may have been lost. ****
+2022/05/22-02:21:59.154 378 Log #3: 13 ops saved to Table #7 OK
+2022/05/22-02:21:59.221 378 Archiving C:\Users\AUDRYG~1\AppData\Local\Temp\flutter_tools.838e36e0\flutter_tools_chrome_device.aa1c5ef3\Default\Site Characteristics Database/000003.log: OK
+2022/05/22-02:21:59.518 378 Log #6: 1 ops saved to Table #8 OK
+2022/05/22-02:21:59.520 378 Archiving C:\Users\AUDRYG~1\AppData\Local\Temp\flutter_tools.838e36e0\flutter_tools_chrome_device.aa1c5ef3\Default\Site Characteristics Database/000006.log: OK
+2022/05/22-02:21:59.520 378 Table #4: 13 entries OK
+2022/05/22-02:21:59.521 378 Table #7: 13 entries OK
+2022/05/22-02:21:59.521 378 Table #8: 1 entries OK
+2022/05/22-02:21:59.525 378 Archiving C:\Users\AUDRYG~1\AppData\Local\Temp\flutter_tools.838e36e0\flutter_tools_chrome_device.aa1c5ef3\Default\Site Characteristics Database/MANIFEST-000001: OK
+2022/05/22-02:21:59.828 378 **** Repaired leveldb C:\Users\AUDRYG~1\AppData\Local\Temp\flutter_tools.838e36e0\flutter_tools_chrome_device.aa1c5ef3\Default\Site Characteristics Database; recovered 3 files; 996 bytes. Some data may have been lost. ****

@@ -1,3 +1,2 @@
-2022/04/10-02:02:47.555 d2b2 Reusing MANIFEST /tmp/flutter_tools.NRCYPS/flutter_tools_chrome_device.NOPOXY/Default/Service Worker/Database/MANIFEST-000001
-2022/04/10-02:02:47.556 d2b2 Recovering log #3
-2022/04/10-02:02:47.556 d2b2 Reusing old log /tmp/flutter_tools.NRCYPS/flutter_tools_chrome_device.NOPOXY/Default/Service Worker/Database/000003.log 
+2022/05/22-02:32:09.732 30ac Creating DB C:\Users\AUDRYG~1\AppData\Local\Temp\flutter_tools.838e36e0\flutter_tools_chrome_device.aa1c5ef3\Default\Service Worker\Database since it was missing.
+2022/05/22-02:32:09.940 30ac Reusing MANIFEST C:\Users\AUDRYG~1\AppData\Local\Temp\flutter_tools.838e36e0\flutter_tools_chrome_device.aa1c5ef3\Default\Service Worker\Database/MANIFEST-000001
