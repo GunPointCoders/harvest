@@ -21,8 +21,8 @@ jobs:
         with:
           flutter-version: '2.10.5'
 
-      - name: Get all Flutter Packages
-        run: flutter pub get
+      #- name: Get all Flutter Packages
+       # run: flutter pub get
 
       - name: Run Flutter Test
         run: flutter test --coverage
