@@ -7,4 +7,10 @@ void main() {
 
     expect(result, "An E-mail is required to Login.");
   });
+
+  test('test user input email correct returns null', () {
+    String result = inputValidator.validatePassword("");
+
+    expect(result, "Please re-enter password");
+  });
 }
