@@ -1,7 +1,7 @@
 
-[![CircleCI](https://circleci.com/gh/GunPointCoders/harvest/tree/master.svg?style=svg)](https://circleci.com/gh/GunPointCoders/harvest/tree/master)
+[![CircleCI](https://circleci.com/gh/GunPointCoders/harvest/tree/commsprint.svg?style=svg)](https://circleci.com/gh/GunPointCoders/harvest/tree/commsprint)
 
-[![codecov](https://codecov.io/gh/GunPointCoders/harvest/branch/master/graph/badge.svg?token=1AYMUTWEBR)](https://codecov.io/gh/GunPointCoders/harvest)
+[![codecov](https://codecov.io/gh/GunPointCoders/harvest/branch/commsprint/graph/badge.svg?token=1AYMUTWEBR)](https://codecov.io/gh/GunPointCoders/harvest)
 
 
 
