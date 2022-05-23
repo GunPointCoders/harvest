@@ -1,9 +1,9 @@
 name: Flutter Test
 on:
   push:
-    branches: [ master ]
+    branches: [ commsprint ]
   pull_request:
-    branches: [ master ]
+    branches: [ commsprint ]
 
   workflow_dispatch:
 
