@@ -1,3 +1,4 @@
+//class that counts how many farmersare there
 class CountFarmers {
   int value = 0;
 
