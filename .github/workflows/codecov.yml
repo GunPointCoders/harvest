@@ -12,7 +12,7 @@ coverage:
           - "src"
        # advanced settings
         branches: 
-          - master
+          - commsprint
         if_ci_failed: error #success, failure, error, ignore
         informational: false
         only_pulls: false
