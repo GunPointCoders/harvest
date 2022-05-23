@@ -1,0 +1,29 @@
+<?php
+$servername = "us-cdbr-east-05.cleardb.net";
+$username = "be5a94bd53081c";
+$password = "root";
+$database = "GunPointCoders_Database";
+
+$link = mysqli_connect($servername, $username, $password, $database);
+
+$farmerid=$_REQUEST["farmerid"];
+$log_name = $_REQUEST["log_name"];
+$logjoincode=$_REQUEST["logcode"];
+$test=array();
+
+if ($r = mysqli_query($link, "INSERT INTO heroku_c9555e5c1ba6888.log(log_name,logjoincode) VALUES ($log_name,$logjoincode) ")) {
+	if($r= mysqli_query($link,"SELECT log_id from heroku_c9555e5c1ba6888.log WHERE log_name=$log_name"){
+		while ($row=$r->fetch_assoc()){
+			$test[]=$row;
+		}
+		$log_id=$test[0];
+		
+	}
+	if ($r = mysqli_query($link, "INSERT INTO heroku_c9555e5c1ba6888.farmerlog.relation(farmerid,log_id) VALUES ($farmerid,$log_id) ")) {
+		echo "successful";
+	}
+}
+else{
+	echo "unsuccessful";
+}
+?>

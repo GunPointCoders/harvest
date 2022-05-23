@@ -1,0 +1,20 @@
+<?php
+$servername = "us-cdbr-east-05.cleardb.net";
+$username = "be5a94bd53081c";
+$password = "root";
+$database = "GunPointCoders_Database";
+
+$link = mysqli_connect($servername, $username, $password, $database);
+
+$log_id=$_REQUEST["log_id"];
+$items = $_REQUEST["items"];
+$weight=$_REQUEST["weight"];
+$date=$_REQUEST["date"];
+
+if ($r = mysqli_query($link, "INSERT INTO heroku_c9555e5c1ba6888.log_records(log_id,items,weight,date) VALUES ($log_id,$items,$weight,$date) ")) {
+	echo "successful";
+}
+else{
+	echo "unsuccessful";
+}
+?>
