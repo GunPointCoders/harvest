@@ -2,77 +2,55 @@
 import 'package:flutter/material.dart';
 import 'package:pie_chart/pie_chart.dart';
 
-class pie extends StatefulWidget {
+class pie extends StatelessWidget {
 
-  pie({Key?key}) :super(key: key);
-
-  @override
-  _pie createState() => _pie();
-
-}
-
-class _pie extends State{
-
-  Map<String,double>data={
-    "this month":33,
-    "last month":22,
-
-  };
-
+  final Map<String,double> pieData;
+  pie({required this.pieData});
 
   @override
 
   Widget build(BuildContext context) {
-    return Scaffold(
-appBar:AppBar(
-  title:Text("Total analysis"),
-),
-    body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-      PieChart(
-        dataMap: data,
-        animationDuration: Duration(microseconds: 800),
-        chartLegendSpacing: 32,
-        chartRadius: MediaQuery.of(context).size.width/3.2,
-        colorList: [
-          Colors.blue,
-          Colors.green,
-          Colors.yellow,
-          Colors.pink,
-          Colors.grey,
-          Colors.red,
-        ],
-        initialAngleInDegree: 0,
-        chartType: ChartType.ring,
-        ringStrokeWidth: 32,
-        centerText: "Total analys",
-        legendOptions: LegendOptions(
-          showLegends: false,
-          legendPosition: LegendPosition.right,
-          showLegendsInRow: true,
-          legendShape: BoxShape.circle,
-          legendTextStyle: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        chartValuesOptions: ChartValuesOptions(
-          showChartValueBackground: true,
-          showChartValues: true,
-          showChartValuesInPercentage: false,
-          decimalPlaces: 1,
-        ),
-
-      ),
-
-
-      ],
+ return
+  PieChart(
+  dataMap: pieData.isEmpty ? {"No selection" : 0.0} : pieData,
+  animationDuration: const Duration(microseconds: 800),
+  chartLegendSpacing: 32,
+  chartRadius: MediaQuery.of(context).size.width/2.5,
+   colorList: const [
+      Colors.blue,
+      Colors.deepPurpleAccent,
+      Colors.green,
+      Colors.yellow,
+      Colors.lightBlueAccent,
+      Colors.pink,
+      Colors.deepOrangeAccent,
+      Colors.grey,
+      Colors.red,
+      Colors.orange,
+   ],
+  initialAngleInDegree: 0,
+  chartType: ChartType.ring,
+  ringStrokeWidth: 32,
+  centerText: "Total analyses",
+   legendOptions: const LegendOptions(
+      showLegends: false,
+      legendPosition: LegendPosition.right,
+      showLegendsInRow: true,
+      legendShape: BoxShape.circle,
+      legendTextStyle: TextStyle(
+      fontWeight: FontWeight.bold,
+   ),
+  ),
+    chartValuesOptions: const ChartValuesOptions(
+      showChartValueBackground: true,
+      showChartValues: true,
+      showChartValuesInPercentage: false,
+      decimalPlaces: 1,
     ),
 
-
-    );
+   );
   }
-  }
+}
 
 
 

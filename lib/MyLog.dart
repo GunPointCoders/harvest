@@ -2,13 +2,20 @@
 
 import 'dart:convert';
 
+//import 'package:dropdown_search2/dropdown_search2.dart';
+import 'package:custom_searchable_dropdown/custom_searchable_dropdown.dart';
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:harvest/atlas.dart';
+import 'package:harvest/pie_chart.dart';
+//import 'package:flutter_dropdown_search/flutter_dropdown_search.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'graph_data.dart';
 import 'chart_model.dart';
 
 import 'package:http/http.dart' as http;
+
+//import 'package:dropdown_search/dropdown_search.dart';
 
 import 'package:searchfield/searchfield.dart';
 
@@ -35,6 +42,8 @@ class _filter extends State<filter_page> {
   // ];
 
   final List<ProduceTimeline>data = [];
+
+  late final Map<String,double> pieData = {};
 
   
 
@@ -120,6 +129,8 @@ class _filter extends State<filter_page> {
   @override
   Widget build(BuildContext context) {
 
+    TextEditingController _controller = TextEditingController();
+
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
@@ -142,83 +153,109 @@ class _filter extends State<filter_page> {
                 children: <Widget>[ //all under of expansion tile, i.e dropdowns
                   Column(
                     children: <Widget>[
-                      
-                      Row(
-                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,//spaces between widgets
-                       children:<Widget> [
-                           const SizedBox(height: 15),
 
-                         const Text(
-                             'Time Period',
-                             style:TextStyle(fontSize:15,fontWeight: FontWeight.bold,
-                             )),
+                      // FlutterDropdownSearch(
+                      //   textController: _controller,
+                      //   items: month,
+                      //   dropdownHeight: 300,
+                      // ),
 
-                         DropdownButton(   //for month
-                               value: monthValue,
-                               icon: const Icon(Icons.keyboard_arrow_down),
-
-                               items: month.map((String item) {
-                                 return DropdownMenuItem(
-                                   value: item,
-                                   child: Text(item),
-                                 );
-                               }).toList(),
-
-                               onChanged: (String? newValue) {
-                                 setState(() {
-                                   monthValue = newValue!;
-                                 });
-                               }
-                           ),
-                       ],
+                      CustomSearchableDropDown(
+                        dropdownHintText: 'Search For time period ',
+                        showLabelInMenu: true,
+                        primaryColor: Colors.red,
+                        menuMode: true,
+                        labelStyle: const TextStyle(
+                            color: Colors.red,
+                            fontWeight: FontWeight.bold
+                        ),
+                        items: month,
+                        label: 'Select time period',
+                        prefixIcon:  const Padding(
+                          padding: EdgeInsets.all(0.0),
+                          child: Icon(Icons.search),
+                        ),
+                        dropDownMenuItems: month?.map((item) {
+                          return item;
+                        })?.toList() ??
+                            [],
+                        onChanged: (value){
+                          if(value!=null)
+                          {
+                            setState(() {
+                              monthValue = value;
+                            });
+                          }
+                          else{
+                            print(null);
+                          }
+                        },
                       ),
 
-                      Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly, //space between the widgets
-                children:<Widget> [
+                      CustomSearchableDropDown(
+                        dropdownHintText: 'Search For produce type ',
+                        showLabelInMenu: true,
+                        primaryColor: Colors.red,
+                        menuMode: true,
+                        labelStyle: const TextStyle(
+                            color: Colors.red,
+                            fontWeight: FontWeight.bold
+                        ),
+                        items: Type,
+                        label: 'Select produce type',
+                        prefixIcon:  const Padding(
+                          padding: EdgeInsets.all(0.0),
+                          child: Icon(Icons.search),
+                        ),
+                        dropDownMenuItems: Type?.map((item) {
+                          return item;
+                        })?.toList() ??
+                            [],
+                        onChanged: (value){
+                          if(value!=null)
+                          {
+                            setState(() {
+                              typeValue = value;
+                            });
+                          }
+                          else{
+                            print(null);
+                          }
+                        },
+                      ),
 
-                  const Text(
-                      'Produce',
-                      style:TextStyle(fontSize:15,fontWeight: FontWeight.bold,)
-                  ),
+                      CustomSearchableDropDown(
+                        dropdownHintText: 'Search For food type ',
+                        showLabelInMenu: true,
+                        primaryColor: Colors.red,
+                        menuMode: true,
+                        labelStyle: const TextStyle(
+                            color: Colors.red,
+                            fontWeight: FontWeight.bold
+                        ),
+                        items: food,
+                        label: 'Select food type',
+                        prefixIcon:  const Padding(
+                          padding: EdgeInsets.all(0.0),
+                          child: Icon(Icons.search),
+                        ),
+                        dropDownMenuItems: food?.map((item) {
+                          return item;
+                        })?.toList() ??
+                            [],
+                        onChanged: (value){
+                          if(value!=null)
+                          {
+                            setState(() {
+                              foodValue = value;
+                            });
+                          }
+                          else{
+                            print(null);
+                          }
+                        },
+                      ),
 
-
-                  DropdownButton(  //for Type
-                      value: typeValue,
-                      icon: const Icon(Icons.keyboard_arrow_down),
-                      items: Type.map((String item) {
-                        return DropdownMenuItem(
-                          value: item,
-                          child: Text(item),
-                        );
-                      }).toList(),
-                      onChanged: (String? newValue) {
-                        setState(() {
-                          typeValue = newValue!;
-                        });
-                      }
-                  ),
-
-
-                  DropdownButton( //for the food list display
-                      value: foodValue,
-                      icon: const Icon(Icons.keyboard_arrow_down),
-
-                      items: food.map((String item) {
-                        return DropdownMenuItem(
-                          value: item,
-                          child: Text(item),
-                        );
-                      }).toList(),
-
-                      onChanged: (String? newValue) {
-                        setState(() {
-                          foodValue = newValue!;
-                        });
-                      }
-                  ),
-                ]
-            )
                     ],
                   )
             ]
@@ -231,29 +268,56 @@ class _filter extends State<filter_page> {
               height:400,
                padding: EdgeInsets.all(12),
               color: Colors.white70,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    SizedBox(height: 400,width : MediaQuery.of(context).size.width,
+                      child: pie(pieData: pieData,),),
+                    SizedBox(height: 400,width: MediaQuery.of(context).size.width,
+                      child: graph(data: data,),),
+
+
+                  ],
+                ),
+
             ////  child: ConstrainedBox(//allow the box to change so that pie chart can fit in the box
                 ///constraints: BoxConstraints(
                    /// minHeight: 100,
 
                 ///),
-                  child: Card(
-                    child:Padding(
-                        padding: EdgeInsets.all(0.0),
-                       child: Column( // to display the heading of bar graph and the bar graph below
-                         children: [
-                           Text("Produce Data"), //title of bar graph
+                  //child: Card(
+//                     child:Padding(
+//                         padding: EdgeInsets.all(0.0),
+//                        child: Row( // to display the heading of bar graph and the bar graph below
+//                          children: [
+//                            //Text("Produce Data"), //title of bar graph
+// // SizedBox(width: 10,),
+//                            // graph(  //displaying the bar graph
+//                            //   data: data,
+//                            // ),
+//
+//                            //SizedBox(width: 10,),
+//                            // Expanded(
+//                            //   child : graph(  //displaying the bar graph
+//                            //     data: data,
+//                            //   ),
+//                            // ),
+//                             Expanded(
+//                                 child: pie(
+//                                   pieData: pieData,
+//                                 ) ),
+//                            Expanded(
+//                              child : graph(  //displaying the bar graph
+//                                data: data,
+//                              ),
+//                            ),
+//
+//                          ],
+//                        )
+//                     ),
 
-                           
 
-                            Expanded(
-                                child: graph(  //displaying the bar graph
-                                  data: data,
-                                ) ),
-                         ],
-                       )
-                    ),
-
-                  ),
+                  //),
 
               ),
             ///),
@@ -317,14 +381,14 @@ class _filter extends State<filter_page> {
                                   for(var i =0;i < list.length ;i++){
 
                                     data.add(ProduceTimeline(months: list[i]['date'], quantity: int.parse(list[i]['weight']), barColor: charts.ColorUtil.fromDartColor(Colors.green)));
+                                    pieData.addAll({list[i]['items'] : double.parse(list[i]['weight'])});
+                                    print('piedata');
+                                    print(pieData);
 
-                                    print('added');
+
 
                                   }
                                   setState(() {});
-                                  
-
-
 
                                 }
                               }
@@ -333,6 +397,22 @@ class _filter extends State<filter_page> {
                             child: const Text("Apply flitter")),
                       ),
                     ),
+            SizedBox(height: 20,),
+            SizedBox(child: InkWell(
+              onTap: () async {
+                http.Response response = await http.post(
+                  Uri.parse("http://10.100.15.123/atlas.php"),
+                  body: ({
+                    'Food': foodValue,
+                  })
+                );
+                if(response.statusCode == 200){
+                  List list = json.decode(response.body);
+                  Navigator.push(context, MaterialPageRoute(builder: (context){return atlas_page(list);},),);
+                }
+              },
+              child: Text ("Food Information",style: TextStyle(color: Colors.blue,fontSize: 17),),
+            ),)
           ],
       ),
 

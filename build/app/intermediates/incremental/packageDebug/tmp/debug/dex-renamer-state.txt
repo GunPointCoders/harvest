@@ -1,4 +1,4 @@
-#Wed May 18 22:35:22 SAST 2022
-base.0=/home/tshavhalufu/Desktop/sprint3/harvest/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
-renamed.0=classes.dex
+#Mon May 23 13:50:47 CAT 2022
+base.0=C\:\\Users\\27725\\Documents\\sprint3\\harvest\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 path.0=classes.dex
+renamed.0=classes.dex
