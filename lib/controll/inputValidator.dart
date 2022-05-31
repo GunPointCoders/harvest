@@ -1,6 +1,5 @@
-class inputValidator{
-  static validateEmail(String ? value){
-
+class inputValidator {
+  static validateEmail(String? value) {
     if (value!.isEmpty) {
       return 'An E-mail is required to Login.';
     }
@@ -11,13 +10,10 @@ class inputValidator{
     return null;
   }
 
-  static validatePassword(String ? value){
+  static validatePassword(String? value) {
     if (value!.isEmpty) {
       return 'Please re-enter password';
     }
     return null;
-
   }
-
-
 }
