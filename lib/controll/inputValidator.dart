@@ -16,4 +16,18 @@ class inputValidator {
     }
     return null;
   }
+
+  static validateName(String? value) {
+    if (value!.isEmpty) {
+      return 'Please Enter first name';
+    }
+    return null;
+  }
+
+  static validateLastName(String? value) {
+    if (value!.isEmpty) {
+      return 'Please Enter last name';
+    }
+    return null;
+  }
 }
