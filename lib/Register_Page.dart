@@ -146,16 +146,17 @@ class _RegisterPage extends State<RegisterPage> {
                   padding:
                       const EdgeInsets.only(bottom: 15, left: 10, right: 10),
                   child: TextFormField(
-                    keyboardType: TextInputType.phone,
-                    controller: getContactNo,
-                    decoration: buildInputDecoration(Icons.phone, "Phone No"),
-                    validator: (String? value) {
-                      if (value!.isEmpty) {
-                        return 'Phone number is required to register. ';
-                      }
-                      return null;
-                    },
-                  ),
+                      keyboardType: TextInputType.phone,
+                      controller: getContactNo,
+                      decoration: buildInputDecoration(Icons.phone, "Phone No"),
+                      //validator: (String? value) {
+                      //  if (value!.isEmpty) {
+                      //    return 'Phone number is required to register. ';
+                      //  }
+                      //  return null;
+                      // },
+                      validator: (String? value) => inputValidator
+                          .validatePhone(value.toString().trim())),
                 ),
                 Padding(
                   padding:

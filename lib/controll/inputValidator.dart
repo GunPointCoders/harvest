@@ -30,4 +30,18 @@ class inputValidator {
     }
     return null;
   }
+
+  static validateWeight(String? value) {
+    if (value!.isEmpty) {
+      return 'Enter valid weight in grams';
+    }
+    return null;
+  }
+
+  static validatePhone(String? value) {
+    if (value!.isEmpty) {
+      return 'Phone number is required to register.';
+    }
+    return null;
+  }
 }
