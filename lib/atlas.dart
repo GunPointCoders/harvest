@@ -22,8 +22,13 @@ import 'package:http/http.dart' as http;
 // class _atlas_page extends State<atlas_page> {
 // ignore: must_be_immutable, camel_case_types
 class atlas_page extends StatelessWidget {
+<<<<<<< HEAD
 
  // String ? food, sowtime, planttime, name, email, phone, harvesttime, sun, pH;
+=======
+  String? food, sowtime, planttime, name, email, phone, harvesttime, sun, pH;
+  String foodValue = 'Select Food';
+>>>>>>> 3d30a0724121359acc2dd06e76d385cf0ef48765
 
   // ignore: use_key_in_widget_constructors
   atlas_page(this.foodData );
@@ -36,8 +41,10 @@ class atlas_page extends StatelessWidget {
     'Almond',
     'Apple (Golden Delicious)',
     'Apple (Granny Smith)',
-    'Artichoke', 'Edible Flower',
-    'Nasturtium', 'Aubergine',
+    'Artichoke',
+    'Edible Flower',
+    'Nasturtium',
+    'Aubergine',
     'Chilli (Birdseye)',
     'Chilli (Serrano)',
     'Pepper (Green California Wonder)',
@@ -66,8 +73,64 @@ class atlas_page extends StatelessWidget {
     'Carrot',
     'Ginger',
     'Jerusalem Artichoke',
-    'Radish', 'Sweet Potato (White)', 'Sweet Potato (Orange)', 'Turmeric', 'Turnip', 'Blackberry', 'Blueberry', 'Gooseberry', 'Kei Apple', 'Strawberry', 'Broccoli', 'Cabbage (Chinese)', 'Cabbage (Purple)', 'Cauliflower', 'Cavolo Nero', 'Kale', 'Butternut Squash', 'Gem Squash', 'Cucumber', 'Pumpkin (Boerpampoen)', 'Pumpkin (Queensland Blue)', 'Zucchini (Green)', 'Celery', 'Rhubarb', 'Chive', 'Leek', 'Onion (Red)', 'Onion (White)', 'Shallot', 'Fig (Green)', 'Fig (Purple)', 'Granadilla', 'Grape (Catawba)', 'Grape (Hanepoot)', 'Grape (Victoria)', 'Grapefruit (Ruby)', 'Lemon', 'Lime', 'Naartjie', 'Orange (Cara Cara)', 'Orange (Valencia)', 'Lemon Verbena', 'Marjoram', 'Rosemary', 'Sage', 'Thyme', 'Lettuce', 'Mustard Leaf', 'Sorrel', 'Spinach', 'Peach (White)', 'Peach (Yellow)', 'Plum (Yellow)', 'Plum (Red)', 'Plum (Purple)', 'Plum (Purple Leaf)', 'Sunflower Seed'];
-
+    'Radish',
+    'Sweet Potato (White)',
+    'Sweet Potato (Orange)',
+    'Turmeric',
+    'Turnip',
+    'Blackberry',
+    'Blueberry',
+    'Gooseberry',
+    'Kei Apple',
+    'Strawberry',
+    'Broccoli',
+    'Cabbage (Chinese)',
+    'Cabbage (Purple)',
+    'Cauliflower',
+    'Cavolo Nero',
+    'Kale',
+    'Butternut Squash',
+    'Gem Squash',
+    'Cucumber',
+    'Pumpkin (Boerpampoen)',
+    'Pumpkin (Queensland Blue)',
+    'Zucchini (Green)',
+    'Celery',
+    'Rhubarb',
+    'Chive',
+    'Leek',
+    'Onion (Red)',
+    'Onion (White)',
+    'Shallot',
+    'Fig (Green)',
+    'Fig (Purple)',
+    'Granadilla',
+    'Grape (Catawba)',
+    'Grape (Hanepoot)',
+    'Grape (Victoria)',
+    'Grapefruit (Ruby)',
+    'Lemon',
+    'Lime',
+    'Naartjie',
+    'Orange (Cara Cara)',
+    'Orange (Valencia)',
+    'Lemon Verbena',
+    'Marjoram',
+    'Rosemary',
+    'Sage',
+    'Thyme',
+    'Lettuce',
+    'Mustard Leaf',
+    'Sorrel',
+    'Spinach',
+    'Peach (White)',
+    'Peach (Yellow)',
+    'Plum (Yellow)',
+    'Plum (Red)',
+    'Plum (Purple)',
+    'Plum (Purple Leaf)',
+    'Sunflower Seed'
+  ];
 
   //TextController to read text entered in text field
   TextEditingController password = TextEditingController();
@@ -80,8 +143,21 @@ class atlas_page extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+<<<<<<< HEAD
           backgroundColor: Colors.green,
           title: const Text("Atlas Page "),
+=======
+        backgroundColor: Colors.green,
+        title: const Text("Atlas Page "),
+        // actions: [
+        //   IconButton(
+        //       icon: const Icon(Icons.search),
+        //       onPressed: () {
+        //         //showSearch(context: context, delegate: CustomSearch());
+        //
+        //       })
+        // ]
+>>>>>>> 3d30a0724121359acc2dd06e76d385cf0ef48765
       ),
       body: Padding(
         padding: const EdgeInsets.all(0.0),
@@ -91,6 +167,7 @@ class atlas_page extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+<<<<<<< HEAD
                 const SizedBox(height: 90,),
                 //in the sprint description there was a picture, I am not sure if they were made available to us.
                 CircleAvatar(
@@ -100,10 +177,64 @@ class atlas_page extends StatelessWidget {
                  // child: Image.network('http://10.100.15.123/foodpics/basil.jpeg'),
                 ),
                 const SizedBox(height: 150,),
+=======
+                CustomSearchableDropDown(
+                  dropdownHintText: 'Search For food type ',
+                  showLabelInMenu: true,
+                  primaryColor: Colors.red,
+                  menuMode: true,
+                  labelStyle: const TextStyle(
+                      color: Colors.red, fontWeight: FontWeight.bold),
+                  items: foodType,
+                  label: 'Select food type',
+                  prefixIcon: const Padding(
+                    padding: EdgeInsets.all(0.0),
+                    child: Icon(Icons.search),
+                  ),
+                  dropDownMenuItems: foodType?.map((item) {
+                        return item;
+                      })?.toList() ??
+                      [],
+                  onChanged: (value) async {
+                    if (value != null) {
+                      // setState(() async {
+                      foodValue = value;
+                      http.Response response = await http.post(
+                          Uri.parse("http://10.100.15.123/atlas.php"),
+                          body: ({
+                            'Food': foodValue,
+                          }));
+                      if (response.statusCode == 200) {
+                        list = json.decode(response.body);
+                        print(list);
+                      }
+                      ;
+                      // }
+
+                    } else {
+                      print(null);
+                    }
+                  },
+                ),
+                SizedBox(
+                  height: 100,
+                ),
+                //in the sprint description there was a picture, I am not sure if they were made available to us.
+                CircleAvatar(
+                  radius: 100,
+                  // child: Text("FOOD PICTURE"),
+                  child:
+                      Image.network('http://10.100.15.123/foodpics/basil.jpeg'),
+                ),
+                SizedBox(
+                  height: 150,
+                ),
+>>>>>>> 3d30a0724121359acc2dd06e76d385cf0ef48765
                 Center(
                   child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: DataTable(
+<<<<<<< HEAD
                         columns:  const [
                           //table   columns for atlas
                           DataColumn(label: Text('Food')),
@@ -132,6 +263,29 @@ class atlas_page extends StatelessWidget {
                        //  ])).toList()
 
                       )),
+=======
+                          columns: const [
+                            //table   columns for atlas
+                            DataColumn(label: Text('Food')),
+                            DataColumn(label: Text('Sow')),
+                            DataColumn(label: Text('Plant')),
+                            DataColumn(label: Text('Harvest')),
+                            DataColumn(label: Text('Sun')),
+                            DataColumn(label: Text('pH')),
+                          ],
+                          rows: list!
+                              .map((e) =>
+                                  //information displaced deending on food selected
+                                  DataRow(cells: [
+                                    DataCell(Text(e['Food'])),
+                                    DataCell(Text(e['Sow'])),
+                                    DataCell(Text(e['Plant'])),
+                                    DataCell(Text(e['HArvest'])),
+                                    DataCell(Text(e['Sun'])),
+                                    DataCell(Text(e['pH'])),
+                                  ]))
+                              .toList())),
+>>>>>>> 3d30a0724121359acc2dd06e76d385cf0ef48765
                 ),
                 const SizedBox(width: 20,),
 
@@ -160,8 +314,8 @@ class atlas_page extends StatelessWidget {
     );
 
     TableRow buildRow(List<String> cells) => const TableRow(
-      //children: cells.map((cell)) => Text
-    );
+        //children: cells.map((cell)) => Text
+        );
   }
 
 }

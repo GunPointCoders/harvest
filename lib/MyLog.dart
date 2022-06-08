@@ -37,7 +37,11 @@ class _filter extends State<filter_page> {
 
   final List<ProduceTimeline> data = [];
 
+<<<<<<< HEAD
   late Map<String, double> pieData = {};
+=======
+  late final Map<String, double> pieData = {};
+>>>>>>> 3d30a0724121359acc2dd06e76d385cf0ef48765
 
   String monthValue = "Select Months";
   String foodValue = 'Select Food';
@@ -247,6 +251,7 @@ class _filter extends State<filter_page> {
         appBar: AppBar(
           title: const Text(" My Log"),
         ),
+<<<<<<< HEAD
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(0.0),
@@ -559,15 +564,323 @@ class _filter extends State<filter_page> {
                 const SizedBox(height: 50,),
               ],
             ),
+=======
+        body: Padding(
+          padding: const EdgeInsets.all(0.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start, //position of column
+            children: <Widget>[
+              const SizedBox(height: 20),
+
+              ExpansionTile(
+                  //the tile that holds all the things under filter
+
+                  title: const Text(
+                    "Filter",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  children: <Widget>[
+                    //all under of expansion tile, i.e dropdowns
+                    Column(
+                      children: <Widget>[
+                        // FlutterDropdownSearch(
+                        //   textController: _controller,
+                        //   items: month,
+                        //   dropdownHeight: 300,
+                        // ),
+
+                        CustomSearchableDropDown(
+                          dropdownHintText: 'Search For time period ',
+                          showLabelInMenu: true,
+                          primaryColor: Colors.red,
+                          menuMode: true,
+                          labelStyle: const TextStyle(
+                              color: Colors.red, fontWeight: FontWeight.bold),
+                          items: month,
+                          label: 'Select time period',
+                          prefixIcon: const Padding(
+                            padding: EdgeInsets.all(0.0),
+                            child: Icon(Icons.search),
+                          ),
+                          dropDownMenuItems: month?.map((item) {
+                                return item;
+                              })?.toList() ??
+                              [],
+                          onChanged: (value) {
+                            if (value != null) {
+                              setState(() {
+                                monthValue = value;
+                              });
+                            } else {
+                              print(null);
+                            }
+                          },
+                        ),
+
+                        CustomSearchableDropDown(
+                          dropdownHintText: 'Search For produce type ',
+                          showLabelInMenu: true,
+                          primaryColor: Colors.red,
+                          menuMode: true,
+                          labelStyle: const TextStyle(
+                              color: Colors.red, fontWeight: FontWeight.bold),
+                          items: Type,
+                          label: 'Select produce type',
+                          prefixIcon: const Padding(
+                            padding: EdgeInsets.all(0.0),
+                            child: Icon(Icons.search),
+                          ),
+                          dropDownMenuItems: Subtype?.map((item) {
+                                return item;
+                              })?.toList() ??
+                              [],
+                          onChanged: (value) {
+                            if (value != null) {
+                              setState(() {
+                                subtypeValue = value;
+                              });
+                            } else {
+                              print(null);
+                            }
+                          },
+                        ),
+
+                        CustomSearchableDropDown(
+                          dropdownHintText: 'Search For produce type ',
+                          showLabelInMenu: true,
+                          primaryColor: Colors.red,
+                          menuMode: true,
+                          labelStyle: const TextStyle(
+                              color: Colors.red, fontWeight: FontWeight.bold),
+                          items: Type,
+                          label: 'Select produce type',
+                          prefixIcon: const Padding(
+                            padding: EdgeInsets.all(0.0),
+                            child: Icon(Icons.search),
+                          ),
+                          dropDownMenuItems: Type?.map((item) {
+                                return item;
+                              })?.toList() ??
+                              [],
+                          onChanged: (value) {
+                            if (value != null) {
+                              setState(() {
+                                typeValue = value;
+                              });
+                            } else {
+                              print(null);
+                            }
+                          },
+                        ),
+
+                        CustomSearchableDropDown(
+                          dropdownHintText: 'Search For produce type ',
+                          showLabelInMenu: true,
+                          primaryColor: Colors.red,
+                          menuMode: true,
+                          labelStyle: const TextStyle(
+                              color: Colors.red, fontWeight: FontWeight.bold),
+                          items: Type,
+                          label: 'Select produce type',
+                          prefixIcon: const Padding(
+                            padding: EdgeInsets.all(0.0),
+                            child: Icon(Icons.search),
+                          ),
+                          dropDownMenuItems: Supertype?.map((item) {
+                                return item;
+                              })?.toList() ??
+                              [],
+                          onChanged: (value) {
+                            if (value != null) {
+                              setState(() {
+                                supertypeValue = value;
+                              });
+                            } else {
+                              print(null);
+                            }
+                          },
+                        ),
+
+                        CustomSearchableDropDown(
+                          dropdownHintText: 'Search For food type ',
+                          showLabelInMenu: true,
+                          primaryColor: Colors.red,
+                          menuMode: true,
+                          labelStyle: const TextStyle(
+                              color: Colors.red, fontWeight: FontWeight.bold),
+                          items: food,
+                          label: 'Select food type',
+                          prefixIcon: const Padding(
+                            padding: EdgeInsets.all(0.0),
+                            child: Icon(Icons.search),
+                          ),
+                          dropDownMenuItems: food?.map((item) {
+                                return item;
+                              })?.toList() ??
+                              [],
+                          onChanged: (value) {
+                            if (value != null) {
+                              setState(() {
+                                foodValue = value;
+                              });
+                            } else {
+                              print(null);
+                            }
+                          },
+                        ),
+                      ],
+                    )
+                  ]),
+
+              SizedBox(height: 30),
+
+              Container(
+                //holds the bar chart
+                height: 400,
+                padding: EdgeInsets.all(12),
+                color: Colors.white70,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    SizedBox(
+                      height: 400,
+                      width: MediaQuery.of(context).size.width,
+                      child: pie(
+                        pieData: pieData,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 400,
+                      width: MediaQuery.of(context).size.width,
+                      child: graph(
+                        data: data,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              ///),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.80,
+                height: 50,
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(30),
+                  ),
+                  child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.green,
+                      ),
+                      onPressed: () async {
+                        data.clear();
+
+                        final prefs = await SharedPreferences.getInstance();
+                        String farmer_id = prefs.getString('farmer_id')!;
+                        String log_id = prefs.getString('log_id')!;
+                        print('this is farmer id');
+                        print(farmer_id);
+
+                        print('this is log id');
+                        print(log_id);
+
+                        var monthV;
+
+                        if (monthValue == 'Select Months') {
+                          monthV = '7';
+                        } else if (monthValue == 'This month') {
+                          monthV = '30';
+                        } else if (monthValue == 'Last 3 months') {
+                          monthV = '90';
+                        } else if (monthValue == 'Last 6 months') {
+                          monthV = '180';
+                        } else if (monthValue == 'Year') {
+                          monthV = '365';
+                        }
+                        http.Response response = await http.post(
+                            Uri.parse("http://10.100.15.123/graph.php"),
+                            body: ({
+                              'items': foodValue,
+                              'log_id': log_id,
+                              'period': monthV
+                            }));
+
+                        if (response.statusCode == 200) {
+                          print(response.body
+                              .toString()
+                              .characters
+                              .characterAt(1));
+                          if (response.body
+                                  .toString()
+                                  .characters
+                                  .characterAt(2) !=
+                              '{') {
+                            List list = json.decode(response.body);
+                            print(list);
+
+                            for (var i = 0; i < list.length; i++) {
+                              data.add(ProduceTimeline(
+                                  months: list[i]['date'],
+                                  quantity: int.parse(list[i]['weight']),
+                                  barColor: charts.ColorUtil.fromDartColor(
+                                      Colors.green)));
+                              pieData.addAll({
+                                list[i]['items']:
+                                    double.parse(list[i]['weight'])
+                              });
+                              print('piedata');
+                              print(pieData);
+                            }
+                            setState(() {});
+                          }
+                        }
+                      },
+                      child: const Text("Apply flitter")),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              SizedBox(
+                child: InkWell(
+                  onTap: () async {
+                    http.Response response = await http.post(
+                        Uri.parse("http://10.100.15.123/atlas.php"),
+                        body: ({
+                          'Food': foodValue.toString(),
+                        }));
+                    if (response.statusCode == 200) {
+                      List list = json.decode(response.body);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return atlas_page(list);
+                          },
+                        ),
+                      );
+                    }
+                  },
+                  child: const Text(
+                    "Food Information",
+                    style: TextStyle(color: Colors.blue, fontSize: 17),
+                  ),
+                ),
+              )
+            ],
+>>>>>>> 3d30a0724121359acc2dd06e76d385cf0ef48765
           ),
         ));
   }
 }
+<<<<<<< HEAD
 
 
 
 
 // TODO Implement this library.
+=======
+>>>>>>> 3d30a0724121359acc2dd06e76d385cf0ef48765
 
 
 

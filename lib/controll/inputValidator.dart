@@ -16,4 +16,32 @@ class inputValidator {
     }
     return null;
   }
+
+  static validateName(String? value) {
+    if (value!.isEmpty) {
+      return 'Please Enter first name';
+    }
+    return null;
+  }
+
+  static validateLastName(String? value) {
+    if (value!.isEmpty) {
+      return 'Please Enter last name';
+    }
+    return null;
+  }
+
+  static validateWeight(String? value) {
+    if (value!.isEmpty) {
+      return 'Enter valid weight in grams';
+    }
+    return null;
+  }
+
+  static validatePhone(String? value) {
+    if (value!.isEmpty) {
+      return 'Phone number is required to register.';
+    }
+    return null;
+  }
 }

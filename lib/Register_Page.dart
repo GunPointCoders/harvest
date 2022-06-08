@@ -7,6 +7,7 @@ import 'package:harvest/Deco_design.dart';
 import 'package:harvest/Login_Page.dart';
 import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:harvest/controll/inputValidator.dart';
 import 'Constant_Colors.dart' as colors;
 
 import 'InputboxClass.dart';
@@ -19,42 +20,40 @@ class RegisterPage extends StatefulWidget {
   @override
   _RegisterPage createState() => _RegisterPage();
 }
+
 var finalResponse;
 var ValidResponse;
 
-var fistName,lastName,email,phone,finalPassword;
+var fistName, lastName, email, phone, finalPassword;
 
-Future doRegister() async{
-
+Future doRegister() async {
   String url = "http://10.100.15.123/register.php";
   final response = await http.post(Uri.parse(url),
-      body:({
+      body: ({
         'email': email,
         'name': fistName,
-        'surname' : lastName,
-        'contact' : phone,
-        'password' :finalPassword
+        'surname': lastName,
+        'contact': phone,
+        'password': finalPassword
       }));
 
-  if(response.statusCode == 200){
-
-    if(response.body.startsWith('Email')){
-      Fluttertoast.showToast(msg: response.body,toastLength: Toast.LENGTH_LONG, backgroundColor: Colors.red,gravity: ToastGravity.BOTTOM,);
-    }
-    else{
+  if (response.statusCode == 200) {
+    if (response.body.startsWith('Email')) {
+      Fluttertoast.showToast(
+        msg: response.body,
+        toastLength: Toast.LENGTH_LONG,
+        backgroundColor: Colors.red,
+        gravity: ToastGravity.BOTTOM,
+      );
+    } else {
       ValidResponse = response.body;
     }
-  }
-  else{
+  } else {
     finalResponse = 'error';
   }
-
 }
 
-
 class _RegisterPage extends State<RegisterPage> {
-
-
   //TextController to read text entered in text field
   TextEditingController getName = TextEditingController();
   TextEditingController getSurname = TextEditingController();
@@ -62,7 +61,6 @@ class _RegisterPage extends State<RegisterPage> {
   TextEditingController getEmail = TextEditingController();
   TextEditingController password = TextEditingController();
   TextEditingController confirmpassword = TextEditingController();
-
 
   final GlobalKey<FormState> _globalkey = GlobalKey<FormState>();
 
@@ -86,77 +84,83 @@ class _RegisterPage extends State<RegisterPage> {
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.only(bottom: 15, left: 10, right: 10),
+                      const EdgeInsets.only(bottom: 15, left: 10, right: 10),
                   child: TextFormField(
-                    keyboardType: TextInputType.text,
-                    controller: getName,
-                    decoration: buildInputDecoration(Icons.person, "First Name"),
-                    validator: (String? value) {
-                      if (value!.isEmpty) {
-                        return 'Please Enter first name';
-                      }
-                      return null;
-                    },
-                  ),
+                      keyboardType: TextInputType.text,
+                      controller: getName,
+                      decoration:
+                          buildInputDecoration(Icons.person, "First Name"),
+                      validator: (String? value) =>
+                          inputValidator.validateName(value.toString().trim())
+                      //validator: (String? value) {
+                      //if (value!.isEmpty) {
+                      //   return 'Please Enter first name';
+                      //  }
+                      //  return null;
+                      // },
+                      ),
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.only(bottom: 15, left: 10, right: 10),
+                      const EdgeInsets.only(bottom: 15, left: 10, right: 10),
                   child: TextFormField(
-                    keyboardType: TextInputType.text,
-                    controller: getSurname,
-                    decoration: buildInputDecoration(Icons.person, "Last Name"),
-                    validator: (String? value) {
-                      if (value!.isEmpty) {
-                        return 'Please Enter last name';
-                      }
-                      return null;
-                    },
-
-                  ),
-                ),
-
-
-                Padding(
-                  padding:
-                  const EdgeInsets.only(bottom: 15, left: 10, right: 10),
-                  child: TextFormField(
-                    keyboardType: TextInputType.emailAddress,
-                    controller: getEmail,
-                    decoration: buildInputDecoration(Icons.email, "Email"),
-                    validator: (String? value) {
-                      if (value!.isEmpty) {
-                        return 'An E-mail is required to register.';
-                      }
-                      if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
-                          .hasMatch(value)) {
-                        return 'Please a valid E-mail';
-                      }
-                      return null;
-                    },
-                    onSaved: (String? value) {
-                      email = value;
-                    },
-                  ),
+                      keyboardType: TextInputType.text,
+                      controller: getSurname,
+                      decoration:
+                          buildInputDecoration(Icons.person, "Last Name"),
+                      validator: (String? value) => inputValidator
+                          .validateLastName(value.toString().trim())
+                      // validator: (String? value) {
+                      //  if (value!.isEmpty) {
+                      //    return 'Please Enter last name';
+                      //   }
+                      //   return null;
+                      //  },
+                      ),
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.only(bottom: 15, left: 10, right: 10),
+                      const EdgeInsets.only(bottom: 15, left: 10, right: 10),
                   child: TextFormField(
-                    keyboardType: TextInputType.phone,
-                    controller: getContactNo,
-                    decoration: buildInputDecoration(Icons.phone, "Phone No"),
-                    validator: (String? value) {
-                      if (value!.isEmpty) {
-                        return 'Phone number is required to register. ';
-                      }
-                      return null;
-                    },
-                  ),
+                      keyboardType: TextInputType.emailAddress,
+                      controller: getEmail,
+                      decoration: buildInputDecoration(Icons.email, "Email"),
+                      // validator: (String? value) {
+                      validator: (String? value) =>
+                          inputValidator.validateEmail(value.toString().trim())
+                      //  if (value!.isEmpty) {
+                      //   return 'An E-mail is required to register.';
+                      // }
+                      //if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
+                      //   .hasMatch(value)) {
+                      //  return 'Please a valid E-mail';
+                      // }
+                      // return null;
+                      // },
+                      // onSaved: (String? value) {
+                      //   email = value;
+                      //  },
+                      ),
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.only(bottom: 15, left: 10, right: 10),
+                      const EdgeInsets.only(bottom: 15, left: 10, right: 10),
+                  child: TextFormField(
+                      keyboardType: TextInputType.phone,
+                      controller: getContactNo,
+                      decoration: buildInputDecoration(Icons.phone, "Phone No"),
+                      //validator: (String? value) {
+                      //  if (value!.isEmpty) {
+                      //    return 'Phone number is required to register. ';
+                      //  }
+                      //  return null;
+                      // },
+                      validator: (String? value) => inputValidator
+                          .validatePhone(value.toString().trim())),
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.only(bottom: 15, left: 10, right: 10),
                   child: TextFormField(
                     controller: password,
                     keyboardType: TextInputType.visiblePassword,
@@ -171,13 +175,13 @@ class _RegisterPage extends State<RegisterPage> {
                 ),
                 Padding(
                   padding:
-                  const EdgeInsets.only(bottom: 15, left: 10, right: 10),
+                      const EdgeInsets.only(bottom: 15, left: 10, right: 10),
                   child: TextFormField(
                     controller: confirmpassword,
                     obscureText: true,
                     keyboardType: TextInputType.text,
                     decoration:
-                    buildInputDecoration(Icons.lock, "Confirm Password"),
+                        buildInputDecoration(Icons.lock, "Confirm Password"),
                     validator: (String? value) {
                       if (value!.isEmpty) {
                         return 'Please re-enter password';
@@ -201,35 +205,47 @@ class _RegisterPage extends State<RegisterPage> {
                     color: Colors.green,
                     onPressed: () async {
                       if (_globalkey.currentState!.validate()) {
-
                         fistName = getName.text;
                         lastName = getSurname.text;
                         email = getEmail.text;
                         phone = getContactNo.text;
                         finalPassword = confirmpassword.text;
 
-                        final response = await http.post(Uri.parse("http://10.100.15.123/register.php"),
-                          body:({
-                            'email': email,
-                            'name': fistName,
-                            'surname' : lastName,
-                            'contact' : phone,
-                            'password' :finalPassword
-                          })
-                        );
+                        final response = await http.post(
+                            Uri.parse("http://10.100.15.123/register.php"),
+                            body: ({
+                              'email': email,
+                              'name': fistName,
+                              'surname': lastName,
+                              'contact': phone,
+                              'password': finalPassword
+                            }));
 
-                        if(response.statusCode == 200){
-                          if(response.body.startsWith('Email')){
-                            Fluttertoast.showToast(msg: response.body,toastLength: Toast.LENGTH_SHORT, backgroundColor: Colors.red,gravity: ToastGravity.BOTTOM,);
-                          }
-                          else{
+                        if (response.statusCode == 200) {
+                          if (response.body.startsWith('Email')) {
+                            Fluttertoast.showToast(
+                              msg: response.body,
+                              toastLength: Toast.LENGTH_SHORT,
+                              backgroundColor: Colors.red,
+                              gravity: ToastGravity.BOTTOM,
+                            );
+                          } else {
                             var data = json.decode(response.body);
                             final prefs = await SharedPreferences.getInstance();
-                            await prefs.setString('farmer_id',data['farmer_id'][0]);
+                            await prefs.setString(
+                                'farmer_id', data['farmer_id'][0]);
 
-                            Fluttertoast.showToast(msg: 'Successfuly registered',toastLength: Toast.LENGTH_SHORT, backgroundColor: Colors.red,gravity: ToastGravity.BOTTOM,);
-                            Navigator.push(context,MaterialPageRoute(builder: (context) => HomePage()),);
-
+                            Fluttertoast.showToast(
+                              msg: 'Successfuly registered',
+                              toastLength: Toast.LENGTH_SHORT,
+                              backgroundColor: Colors.red,
+                              gravity: ToastGravity.BOTTOM,
+                            );
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HomePage()),
+                            );
                           }
                         }
 
@@ -238,9 +254,13 @@ class _RegisterPage extends State<RegisterPage> {
                         // }
 
                         return;
-                      } 
-                      else {
-                        Fluttertoast.showToast(msg: 'Something went wrong',toastLength: Toast.LENGTH_SHORT, backgroundColor: Colors.red,gravity: ToastGravity.BOTTOM,);
+                      } else {
+                        Fluttertoast.showToast(
+                          msg: 'Something went wrong',
+                          toastLength: Toast.LENGTH_SHORT,
+                          backgroundColor: Colors.red,
+                          gravity: ToastGravity.BOTTOM,
+                        );
                       }
                     },
                     shape: RoundedRectangleBorder(
