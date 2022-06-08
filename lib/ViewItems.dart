@@ -51,7 +51,7 @@ final List logData;
 								onPressed: () async {
                     final prefs = await SharedPreferences.getInstance();
                     final String? farmer_id = prefs.getString('farmer_id');
-                    print(';og id');
+                    print('Log id');
                     final String? log_id = prefs.getString('log_id'); 
 
                     print(log_id);
@@ -81,10 +81,10 @@ final List logData;
 								onPressed: () async {
                     final prefs = await SharedPreferences.getInstance();
                     final String? farmer_id = prefs.getString('farmer_id');
-                    print(';og id');
+                    print('log id');
                     final String? log_id = prefs.getString('log_id'); 
                     
-                    Navigator.push(context,MaterialPageRoute(builder: (context) =>  filter_page()),);
+                    Navigator.push(context,MaterialPageRoute(builder: (context) =>  const filter_page()),);
 		
 								},
 								child: const Text("Analyse"),

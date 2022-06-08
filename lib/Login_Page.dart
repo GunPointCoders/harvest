@@ -146,7 +146,7 @@ class _Login extends State<Login> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => HomePage()),
+                                          builder: (context) => const HomePage()),
                                     );
                                   }
 
@@ -166,7 +166,7 @@ class _Login extends State<Login> {
                             )),
                       ),
                       
-                      SizedBox(height: 30),
+                      const SizedBox(height: 30),
 
                       SizedBox(
                         width: MediaQuery.of(context).size.width * 0.8,
