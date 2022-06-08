@@ -179,13 +179,9 @@ class _Login extends State<Login> {
                               // style: ElevatedButton.styleFrom(primary: Colors.black26,textStyle: const TextStyle(color: Colors.black,fontSize: 20,))
                             )),
                       ),
-<<<<<<< HEAD
                       
                       const SizedBox(height: 30),
-=======
 
-                      SizedBox(height: 30),
->>>>>>> 3d30a0724121359acc2dd06e76d385cf0ef48765
 
                       SizedBox(
                         width: MediaQuery.of(context).size.width * 0.8,
